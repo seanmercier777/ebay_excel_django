@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {#    <link href="{% static '/style.css' %}" rel="stylesheet"/>#}
+
+
+    <script src="{% static '/scripts.js' %}"></script>
+
+
+    <style>
+
+    </style>
+</head>
+<body>
+
+{% include 'layout/navigation.html' %}
+
+<div class="container p-3 my-3 bg-dark text-white">
+    <div class="container">
+        <h2 style="margin: 15px;">E-Bay Card Search</h2>
+        <div class="card">
+            <div class="card-body">
+                <form>
+                    {% csrf_token %}
+                    <div class="row text-dark" style="margin: 15px">
+                        <div class="col-sm-2">Search:</div>
+                        <div class="col-sm-8">
+                            <input type="text" name="keywords" id="id_keyword" class="form-control"
+                                   placeholder="Michael Jordon" required>
+                        </div>
+                    </div>
+                    <div class="row text-dark" style="margin: 15px">
+                        <div class="col-sm-2">E-Bay Store:</div>
+                        <div class="col-sm-8">
+                            <input type="text" name="keywords" id="id_keyword" class="form-control"
+                                   placeholder="probstein123" required>
+                        </div>
+                    </div>
+                    <div class="row text-dark" style="margin: 15px">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8">
+                            <div class="dropdown">
+
+{#                                <select class="btn btn-primary dropdown-toggle" name="category" id="category">#}
+{#                                    <div class="dropdown-menu">#}
+{#                                        <option class="dropdown-white">All Categories</option>#}
+{#                                        <optgroup label="Categories">#}
+{#                                            <div class="dropdown-divider"></div>#}
+{#                                            <option class="dropdown-white">Baseball</option>#}
+{#                                            <option class="dropdown-white">Basketball</option>#}
+{#                                        </optgroup>#}
+{#                                    </div>#}
+{#                                </select>#}
+
+
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                    All Categories
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Baseball</a>
+                                    <a class="dropdown-item" href="#">Basketball</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-dark" style="margin: 15px">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8"></div>
+                    </div>
+                    <div class="row text-dark" style="margin: 15px">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8">
+                            <button id="search" type="button" style="width: 100%"
+                                    onclick="call_excel();"
+                                    class="btn btn-fill btn-info btn-lg">Search
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{##}
+{#<div class="col-md-12">#}
+{#    <div class="card  card-plain">#}
+{#        <h4 class="card-title">Card Collection Products Search</h4>#}
+{#        <div class="card">#}
+{#            <div class="card-body">#}
+{#                <form>#}
+{#                    {% csrf_token %}#}
+{#                    <div class="row">#}
+{#                        <div class="col-md-3 px-md-3">#}
+{#                            <div class="form-group">#}
+{#                                <label>Keywords</label>#}
+{#                                <input type="text" name="keywords" id="id_keyword" class="form-control"#}
+{#                                       required>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                        <div class="col-md-3 px-md-3">#}
+{#                            <div class="form-group">#}
+{#                                <label>Categories</label>#}
+{#                                <div class="dropdown">#}
+{#                                    <select class="btn btn-primary dropdown-toggle" name="category"#}
+{#                                            id="category">#}
+{#                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">#}
+{#                                            <option class="dropdown-white">All Categories</option>#}
+{#                                            <optgroup label="Categories">#}
+{#                                                <div class="dropdown-divider"></div>#}
+{#                                                <option class="dropdown-white">Baseball</option>#}
+{#                                                <option class="dropdown-white">Basketball</option>#}
+{#                                            </optgroup>#}
+{#                                        </div>#}
+{#                                    </select>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="card-footer">#}
+{#                            <button id="search" type="button" class="btn btn-fill btn-primary">Search</button>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{#</div>#}
+
+
+</body>
+</html>
