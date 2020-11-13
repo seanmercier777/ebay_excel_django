@@ -1,4 +1,11 @@
 function call_excel() {
+
+    var keywords = $('#id_keyword').val();
+
+        if (keywords === "") {
+        return;
+    }
+
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         var a, today;
@@ -12,10 +19,13 @@ function call_excel() {
             return a.click();
         }
     };
-    xhttp.open("GET", "/dump", true);
+
+
+
+    xhttp.open("GET", "/generate_results_table", true);
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.responseType = 'blob';
-    xhttp.send();
+    xhttp.send(keywords);
 }
 
 

@@ -20,6 +20,6 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('', views.index, name='index'),
-    url(r'^ajax/generate_results_table/$', views.generate_results_table, name='generate_results_table'),
-    url(r'^dump/', views.generate_results_table),
+    url(r'^generate_results_table/$', views.generate_results_table, name='generate_results_table'),
+    # url(r'^dump/', views.generate_results_table),
 ]
