@@ -8,10 +8,7 @@ def index(request):
     return render(request, "index.html")
 
 def generate_results_table(request):
-
     keyword = request.GET.get('keywords')
-    #['keywords']
-    #keyword = 'michael'
 
     output = io.BytesIO()
     workbook = xlsxwriter.Workbook(output)

@@ -13,16 +13,14 @@ function call_excel() {
             a = document.createElement('a');
             a.href = window.URL.createObjectURL(xhttp.response);
             today = new Date();
-            a.download = "users_" + today.toDateString().split(" ").join("_") + ".xlsx";
+            a.download = "ebay_output_" + keywords + "_" + today.toDateString().split(" ").join("_") +".xlsx"
             a.style.display = 'none';
             document.body.appendChild(a);
             return a.click();
         }
     };
 
-
-
-    xhttp.open("GET", "/generate_results_table", true);
+    xhttp.open("GET", `/generate_results_table?keywords=${keywords}`, true);
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.responseType = 'blob';
     xhttp.send(keywords);
