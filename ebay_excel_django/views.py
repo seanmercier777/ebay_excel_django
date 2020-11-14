@@ -9,6 +9,7 @@ def index(request):
 
 def generate_results_table(request):
     keyword = request.GET.get('keywords')
+    store = request.GET.get('store')
 
     output = io.BytesIO()
     workbook = xlsxwriter.Workbook(output)
@@ -16,9 +17,7 @@ def generate_results_table(request):
     worksheet = workbook.add_worksheet()
 
     #This retreives the data
-    #ebay_scrape(make_urls(request.GET['keywords']))
-    ebay_scrape(make_urls(keyword), worksheet)
-    #worksheet.write(2, 1, 3)# Row, Column, Value # Starts at zero
+    ebay_scrape(make_urls([keyword], store), worksheet)
 
     # close workbook
     workbook.close()

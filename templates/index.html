@@ -42,33 +42,43 @@
                     <div class="row text-dark" style="margin: 15px">
                         <div class="col-sm-2">E-Bay Store:</div>
                         <div class="col-sm-8">
-                            <input type="text" name="keywords" id="id_keyword" class="form-control"
-                                   placeholder="probstein123" required>
+                            <input type="text" name="keywords" id="id_store" class="form-control"
+                                   placeholder="probstein123, pwcc_auctions (Currently Defaults to probstein123 for prototyping)"
+                                   required>
                         </div>
                     </div>
                     <div class="row text-dark" style="margin: 15px">
                         <div class="col-sm-2"></div>
                         <div class="col-sm-8">
                             <div class="dropdown">
-
-{#                                <select class="btn btn-primary dropdown-toggle" name="category" id="category">#}
-{#                                    <div class="dropdown-menu">#}
-{#                                        <option class="dropdown-white">All Categories</option>#}
-{#                                        <optgroup label="Categories">#}
-{#                                            <div class="dropdown-divider"></div>#}
-{#                                            <option class="dropdown-white">Baseball</option>#}
-{#                                            <option class="dropdown-white">Basketball</option>#}
-{#                                        </optgroup>#}
-{#                                    </div>#}
-{#                                </select>#}
-
-
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <button type="button" class="btn btn-primary dropdown-toggle" id="id_cat" data-toggle="dropdown">
                                     All Categories
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#">Baseball</a>
                                     <a class="dropdown-item" href="#">Basketball</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-dark" style="margin: 15px">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8">
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-primary dropdown-toggle" id="id_pages" data-toggle="dropdown">
+                                    Number of Pages to Return
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">1</a>
+                                    <a class="dropdown-item" href="#">2</a>
+                                    <a class="dropdown-item" href="#">3</a>
+                                    <a class="dropdown-item" href="#">4</a>
+                                    <a class="dropdown-item" href="#">5</a>
+                                    <a class="dropdown-item" href="#">6</a>
+                                    <a class="dropdown-item" href="#">7</a>
+                                    <a class="dropdown-item" href="#">8</a>
+                                    <a class="dropdown-item" href="#">9</a>
+                                    <a class="dropdown-item" href="#">10</a>
                                 </div>
                             </div>
                         </div>

@@ -6,6 +6,8 @@ function call_excel() {
         return;
     }
 
+    var store = $('#id_store').val();
+
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         var a, today;
@@ -20,7 +22,7 @@ function call_excel() {
         }
     };
 
-    xhttp.open("GET", `/generate_results_table?keywords=${keywords}`, true);
+    xhttp.open("GET", `/generate_results_table?keywords=${keywords}&store=${store}`, true);
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.responseType = 'blob';
     xhttp.send(keywords);
