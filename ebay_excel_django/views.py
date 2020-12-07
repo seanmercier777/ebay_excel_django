@@ -28,3 +28,5 @@ def generate_results_table(request):
 
 
 
+def player(request):
+    return render(request, "player.html")

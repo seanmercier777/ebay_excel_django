@@ -27,7 +27,7 @@ SECRET_KEY = 'v1*@7q-p@v_yrupr#_se&!03f8-4igm%@$=uy#rxqwh5&^+%qi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['165.227.193.49', '127.0.0.1', 'optaristo.com', 'www.optaristo.com']
 
 
 # Application definition
