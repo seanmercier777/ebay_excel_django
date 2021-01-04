@@ -22,5 +22,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('player', views.player, name='player'),
     url(r'^generate_results_table/$', views.generate_results_table, name='generate_results_table'),
-    # url(r'^dump/', views.generate_results_table),
+
+    url(r'^player_import/$', views.player_import, name='player_import'),
+
+    url(r'^upload/csv/$', views.upload_csv, name='upload_csv'),
 ]

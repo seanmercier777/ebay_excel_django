@@ -1,17 +1,48 @@
 from bs4 import BeautifulSoup
 import requests
+from datetime import datetime
 
-def make_urls(names, ebayStore):
+def make_urls(names, ebayStore=None, fromCsv=False):
 
     if ebayStore is None:
         ebayStore = "probstein123" #pwcc_auctions
 
-    url = f"https://www.ebay.com/sch/m.html?_odkw=&Grade=10&_ssn={ebayStore}&_armrs=1&LH_Complete=1&_dcat=212&LH_Sold=1&_osacat=212&_from=R40&_trksid=p2046732.m570.l1313&_sacat=212&_ipg=200&_nkw="
+    #Search Paramters
+    grade = "10"
+    completed = "1"
+    sold = "1"
+
+    if fromCsv:
+        url = f"https://www.ebay.com/sch/m.html?_odkw=&" \
+          f"Grade=10&" \
+          f"_ssn={ebayStore}&" \
+          f"_armrs=1&" \
+          f"LH_Complete=1&" \
+          f"_dcat=212&" \
+          f"LH_Sold=1&" \
+          f"_osacat=212&" \
+          f"_from=R40&" \
+          f"_trksid=p2046732.m570.l1313&" \
+          f"_sacat=212&" \
+          f"_ipg=200&" \
+          f"Player="
+    else:
+        url = f"https://www.ebay.com/sch/m.html?_odkw=&Grade=10&_ssn={ebayStore}&_armrs=1&LH_Complete=1&_dcat=212&LH_Sold=1&_osacat=212&_from=R40&_trksid=p2046732.m570.l1313&_sacat=212&_ipg=200&_nkw="
 
     urls = []
 
+
+    #https://www.ebay.com/sch/Sports-Trading-Cards/212/m.html?Grade=10&_ssn=probstein123&_armrs=1&LH_Complete=1&LH_Sold=1&_from=R40&_ipg=200&_dcat=212&rt=nc&LH_AllListings=1&Player=LeBron%2520James
+
     for name in names:
-        devUrl = url + name.replace(" ", "+")
+
+        if fromCsv:
+            name = name.replace("\r\n", "")
+            devUrl = url + name.replace(" ", "%2520")
+        else:
+            devUrl = url + name.replace(" ", "+")
+
+
         urls.append(devUrl)
         for x in range(2, 5):
             urls.append(devUrl + f'&_pgn={x}')
@@ -22,8 +53,9 @@ def make_urls(names, ebayStore):
 
     return urls
 
-def ebay_scrape(urls, worksheet):
+def ebay_scrape(urls, worksheet, start_date = None, end_date = None):
     worksheet.title = 'Ebay Sheet'
+    worksheet.name = 'EbaySheet'
 
     worksheet.write(0, 0, "Title")
     worksheet.write(0, 1, "Price")
@@ -46,7 +78,24 @@ def ebay_scrape(urls, worksheet):
             #print(price)
 
             date = result.find("li", {"class": "timeleft"}).text
-            #print(date)
+
+            if start_date is not None:
+                datelist = date.split(" ")
+                dateParsed = datelist[0].replace("-", " ")
+                dateParsed = dateParsed.replace('\n', '')
+
+                values = dateParsed.startswith('J', 0, 1)
+
+                if dateParsed.startswith('J', 0, 1):
+                    dateParsed = dateParsed + " 2021"
+                else:
+                    dateParsed = dateParsed + " 2020"
+
+
+                dateParsed = datetime.strptime(dateParsed, '%b %d %Y')
+
+                if dateParsed < start_date or dateParsed > end_date:
+                    break
 
             global_sheet_count += 1
 
